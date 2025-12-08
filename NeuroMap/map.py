@@ -1,8 +1,8 @@
 import torch.nn as nn
-from . import cell
+from NeuroMap import Cell
 
 class Map(nn.Module):
-    def __init__(self, grid: list[list[cell.Cell]]):
+    def __init__(self, grid: list[list[Cell]]):
         super().__init__()
         self.grid = grid
 
@@ -10,10 +10,12 @@ class Map(nn.Module):
         r, c = 0, 0   # 시작점 (필요하면 자동 탐색으로 바꿀 수 있음)
 
         while True:
-            module, arrow = self.grid[r][c]
+            cell = self.grid[r][c]
+            soma = cell.soma
+            arrow = cell.arrow
 
             # 텐서를 모듈에 통과시킨다
-            x = module(x)
+            x = soma(x)
 
             # STOP이면 종료
             if arrow.value == (0,0):
