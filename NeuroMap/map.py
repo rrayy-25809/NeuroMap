@@ -1,16 +1,10 @@
 import torch.nn as nn
+from . import cell
 
 class Map(nn.Module):
-    def __init__(self, grid):
+    def __init__(self, grid: list[list[cell.Cell]]):
         super().__init__()
         self.grid = grid
-
-        # 모듈을 nn.Module로 등록해야 PyTorch에서 파라미터 추적 가능
-        for row in grid:
-            for cell in row:
-                module, _ = cell
-                if isinstance(module, nn.Module):
-                    self.add_module(str(id(module)), module)
 
     def forward(self, x):
         r, c = 0, 0   # 시작점 (필요하면 자동 탐색으로 바꿀 수 있음)
