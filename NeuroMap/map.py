@@ -1,5 +1,5 @@
 import torch.nn as nn
-from NeuroMap import Cell
+from .cell import Cell
 
 class Map(nn.Module):
     def __init__(self, grid: list[list[Cell]]):

@@ -1,5 +1,5 @@
 from typing import Union
-from NeuroMap import Arrow
+from .arrow import Arrow
 from torch.nn import Module
 from types import FunctionType
 
