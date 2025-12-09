@@ -1,4 +1,4 @@
-from ..NeuroMap import Map, Cell, Arrow
+from NeuroMap import Map, Cell, Arrow
 from torch.nn import Linear
 from torch.nn import Softmax
 
