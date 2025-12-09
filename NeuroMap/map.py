@@ -17,15 +17,13 @@ class Map(nn.Module):
         r, c = 0, 0   # 시작점 (필요하면 자동 탐색으로 바꿀 수 있음)
 
         while True:
-            print(f"위치 ({r}, {c}), 받은 텐서 크기: {x.shape}")
+            # print(f"위치 ({r}, {c}), 받은 텐서 크기: {x.shape}")
             cell:Cell = self.grid[r][c] # type: ignore
 
-            # 텐서를 모듈에 통과시킨다
-            x, arrow = cell(x)
+            x, arrow = cell(x) # 텐서를 모듈에 통과시킨다
 
-            # STOP이면 종료
+            # STOP이면 값
             if arrow.value == (0,0):
-                print("종료")
                 return x
 
             # 다음 위치 계산
