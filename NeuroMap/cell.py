@@ -5,7 +5,7 @@ from torch.nn import Module
 from types import FunctionType
 
 class Cell(Module):
-    def __init__(self, soma: Union[FunctionType, Module, Soma], arrow: Arrow):
+    def __init__(self, soma: Union[FunctionType, Module, Soma], arrow: Union[Arrow, tuple[Arrow]]):
         super().__init__()
         self.soma = soma
         self.arrow = arrow

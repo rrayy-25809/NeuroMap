@@ -19,3 +19,6 @@ class Arrow(Enum):
     
     def __or__(self, value: Arrow) -> Arrow:
         return random.choice([self, value]) # 랜덤으로 둘 중 하나 선택
+    
+    def __and__(self, value: Arrow) -> tuple[Arrow]:
+        return (self, value) # type: ignore
