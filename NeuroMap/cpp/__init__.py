@@ -11,8 +11,7 @@ DIR = os.path.dirname(os.path.abspath(__file__))
 neuromap_cpp = load(
     name="neuromap_cpp",
     sources=[
-        os.path.join(DIR, "bind.cpp"),
-        # os.path.join(DIR, "test.cpp"),
+        os.path.join(DIR, "bind.cpp"), # 빌드 위치: C:\Users\rrayy\AppData\Local\torch_extensions\torch_extensions\Cache\py314_cu128\neuromap_cpp
     ],
     verbose=True,
 )
