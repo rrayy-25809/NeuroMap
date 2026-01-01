@@ -8,10 +8,14 @@ os.add_dll_directory(torch_lib_path)
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 
-neuromap_cpp = load(
-    name="neuromap_cpp",
-    sources=[
-        os.path.join(DIR, "bind.cpp"), # 빌드 위치: C:\Users\rrayy\AppData\Local\torch_extensions\torch_extensions\Cache\py314_cu128\neuromap_cpp
-    ],
-    verbose=True,
-)
+if not "neuromap_cpp.pyd" in os.listdir(DIR):
+    neuromap_cpp = load(
+        name="neuromap_cpp",
+        sources=[
+            os.path.join(DIR, "bind.cpp"), # 빌드 위치: C:\Users\rrayy\AppData\Local\torch_extensions\torch_extensions\Cache\py314_cu128\neuromap_cpp
+        ],
+        build_directory=DIR,
+        verbose=True,
+    )
+else:
+    from . import neuromap_cpp
